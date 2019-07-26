@@ -8,6 +8,7 @@ import * as cors from 'cors';
 import * as compress from 'compression';
 import * as cookieParser from 'cookie-parser';
 import { authRouter, rootRouter } from './routers';
+import { eventRouter } from './routers/event';
 import * as dotenv from 'dotenv';
 import { notFoundMiddleware, errorMiddleware } from './middlewares/error';
 import { Database } from './database';
@@ -53,6 +54,8 @@ database
   // auth routes
   apiRouter.use('/auth', authRouter);
 
+  // event router
+  apiRouter.use('/event', eventRouter);
 
   // HTTP REQUEST ERRORS
   app.use(errorMiddleware)
